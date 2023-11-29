@@ -93,7 +93,7 @@
                     </div>
                     <div style="text-align: center;">
                         <br><br><a href="salon/simpanReservasi">
-                            <img src="/img/booknow.png" width="160" height="48">
+                            <img src="/img/pesansekarang.png" width="160" height="48">
                         </a>
                     </div>
 
