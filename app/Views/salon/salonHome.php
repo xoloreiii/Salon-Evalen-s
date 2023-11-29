@@ -89,7 +89,7 @@
                     </div>
                     <div style="text-align: center;">
                         <br><br><a href="salon/salonLogin">
-                            <img src="/img/pesansekarang.png" width="160" height="48">
+                            <img src="/img/pesansekarang.png" width="250" height="48">
                         </a>
                     </div>
 
