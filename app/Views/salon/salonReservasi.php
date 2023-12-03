@@ -41,7 +41,9 @@
         }
 
         body {
-            background-color: rgba(232, 197, 185, 0.919);
+            background-image: url('https://img.freepik.com/free-vector/petals-pink-rose-spa-background_8829-2606.jpg?w=1060&t=st=1701513014~exp=1701513614~hmac=b3ceb943adce20a674cf85ab7916955c737196f57c3f7159b2f2081cb0c69d7e'); 
+            background-size: cover; 
+            background-position: center;
             height: 100vh;
             margin: 0;
             padding: 0;
@@ -130,7 +132,7 @@
                             <?php } ?>
                         </select>
                     </p>
-                    <!-- <p>
+                    <p>
                         <label for="waktu">Pilih waktu reservasi :</label><br>
                         <select id="waktu" name="waktu" class="form-control">
                             <option value="10.00 - 12.00 AM">10.00 - 12.00</option>
@@ -138,43 +140,8 @@
                             <option value="02.00 - 04.00 PM">02.00 - 04.00</option>
                             <option value="04.00 - 06.00 PM">04.00 - 06.00</option>
                         </select>
-                    </p> -->
-                    <?php
-                        // Contoh fungsi untuk mendapatkan informasi slot yang sudah dipesan
-                        function getBookedSlots()
-                        {
-                            // Misalnya, kita menggunakan array untuk menyimpan informasi
-                            return [
-                                '10.00 - 12.00 AM' => ['booking1', 'booking2'],
-                                '12.00 - 02.00 PM' => ['booking3'],
-                                // ...
-                            ];
-                        }
-
-                        // Fungsi ini mengembalikan array yang berisi informasi slot yang sudah dipesan
-                        $booked_slots = getBookedSlots();
-
-                        function checkAvailability($timeSlot, $bookedSlots)
-                        {
-                            $maxSlots = 4; // Jumlah maksimal slot per jam
-
-                            // Logika untuk memeriksa ketersediaan slot
-                            if (isset($bookedSlots[$timeSlot]) && count($bookedSlots[$timeSlot]) >= $maxSlots) {
-                                return 'disabled';
-                            } else {
-                                return '';
-                            }
-                        }
-                    ?>
-                    <p>
-                        <label for="waktu">Pilih waktu reservasi :</label><br>
-                        <select id="waktu" name="waktu" class="form-control">
-                            <option value="10.00 - 12.00 AM" <?= checkAvailability("10.00 - 12.00 AM", $booked_slots) ?>>10.00 - 12.00</option>
-                            <option value="12.00 - 02.00 PM" <?= checkAvailability("12.00 - 02.00 PM", $booked_slots) ?>>12.00 - 02.00</option>
-                            <option value="02.00 - 04.00 PM" <?= checkAvailability("02.00 - 04.00 PM", $booked_slots) ?>>02.00 - 04.00</option>
-                            <option value="04.00 - 06.00 PM" <?= checkAvailability("04.00 - 06.00 PM", $booked_slots) ?>>04.00 - 06.00</option>
-                        </select>
                     </p>
+                    
                     <p>
                         <label for="pembayaran">Pilih Metode Pembayaran :</label><br>
                         <select onclick="showPaymentForm()" id="pembayaran" name="pembayaran" class="form-control">
@@ -184,7 +151,7 @@
                     </p>
                     <div id="paymentForm" style="display: none;">
                         <p>
-                            <img src="/img/qris.png" style="width: 200px; height: 200px; display: block;">
+                            <img src="/img/qris.png" style="width: 700px; height: 700px; display: block;">
                             <br>
                             <label for=" photo">Upload foto bukti pembayaran:</label><br>
                             <input type="file" id="photo" name="photo" accept="image/*">

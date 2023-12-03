@@ -41,9 +41,11 @@
         }
 
         body {
-            background-color: rgba(232, 197, 185, 0.919);
-            height: 100vh;
-            margin: 0;
+            background-image: url('https://img.freepik.com/free-vector/petals-pink-rose-spa-background_8829-2606.jpg?w=1060&t=st=1701513014~exp=1701513614~hmac=b3ceb943adce20a674cf85ab7916955c737196f57c3f7159b2f2081cb0c69d7e'); 
+            background-size: cover; 
+            background-position: center;
+            height: 100vh; 
+            margin: 0; 
             padding: 0;
         }
 

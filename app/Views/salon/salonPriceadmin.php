@@ -27,62 +27,35 @@
             border-radius: 6px;
         }
 
-        form {
-            max-width: 300px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
         h2 {
             text-align: center;
-        }
-
-        .button {
-            border: none;
-            color: white;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
-
-        .button1 {
-            background-color: white;
-            color: black;
-            border: 2px solid #4CAF50;
-        }
-
-        .button1:hover {
-            background-color: #4CAF50;
-            color: white;
         }
 
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
-            width: 50%;
+            width: 100%;
+            text-align: center;
         }
 
-        td,
-        th {
-            border: 1px solid #dddddd;
+        td, th {
+            border: 1px solid #000000;
             text-align: left;
             padding: 5px;
         }
 
         tr:nth-child(even) {
-            background-color: #dddddd;
+            background-color: #dddddd; /* putih untuk baris genap */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffc0cb; /* pink untuk baris ganjil */
         }
 
         body {
-            background-color: rgba(232, 197, 185, 0.919);
+            background-image: url('https://img.freepik.com/free-vector/petals-pink-rose-spa-background_8829-2606.jpg?w=1060&t=st=1701513014~exp=1701513614~hmac=b3ceb943adce20a674cf85ab7916955c737196f57c3f7159b2f2081cb0c69d7e'); 
+            background-size: cover; 
+            background-position: center;
             height: 100vh;
             margin: 0;
             padding: 0;
@@ -94,19 +67,6 @@
 
         }
 
-        th {
-            position: sticky;
-            top: 25px;
-
-            background-color: #BD7272;
-        }
-
-        /* .table-wrapper {
-            max-height: 2500px;
-            overflow: scroll;
-
-            margin: 20px;
-        } */
     </style>
 </head>
 
@@ -152,7 +112,7 @@
         <br><br><br>
         <div class="outer-wrapper">
             <div class="table-wrapper">
-                <div class="container-fluid">
+                <div class="container">
                     <table>
                         <tr>
                             <!-- <th class="center">No</th> -->

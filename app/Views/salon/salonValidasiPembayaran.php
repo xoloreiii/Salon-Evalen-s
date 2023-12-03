@@ -39,7 +39,9 @@
         }
 
         body {
-            background-color: rgba(232, 197, 185, 0.919);
+            background-image: url('https://img.freepik.com/free-vector/petals-pink-rose-spa-background_8829-2606.jpg?w=1060&t=st=1701513014~exp=1701513614~hmac=b3ceb943adce20a674cf85ab7916955c737196f57c3f7159b2f2081cb0c69d7e'); 
+            background-size: cover; 
+            background-position: center;
             margin: 0;
             padding: 0;
         }
@@ -55,19 +57,22 @@
             border-collapse: collapse;
             width: 100%;
             text-align: center;
-            /* min-width: max-content; */
         }
 
-        td,
-        th {
+        td, th {
             border: 1px solid #000000;
             text-align: left;
             padding: 5px;
         }
 
         tr:nth-child(even) {
-            background-color: #dddddd;
+            background-color: #dddddd; /* putih untuk baris genap */
         }
+
+        tr:nth-child(odd) {
+            background-color: #ffc0cb; /* pink untuk baris ganjil */
+        }
+
     </style>
 </head>
 
