@@ -27,10 +27,6 @@
             border-radius: 6px;
         }
 
-        h2 {
-            text-align: center;
-        }
-
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;

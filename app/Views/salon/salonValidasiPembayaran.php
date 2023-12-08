@@ -25,31 +25,8 @@
             border-radius: 6px;
         }
 
-        form {
-            max-width: 300px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        body {
-            background-image: url('https://img.freepik.com/free-vector/petals-pink-rose-spa-background_8829-2606.jpg?w=1060&t=st=1701513014~exp=1701513614~hmac=b3ceb943adce20a674cf85ab7916955c737196f57c3f7159b2f2081cb0c69d7e'); 
-            background-size: cover; 
-            background-position: center;
-            margin: 0;
-            padding: 0;
-        }
-
         .container {
             padding: 20px;
-            overflow-x: auto;
-            /* Menambahkan scroll horizontal */
         }
 
         table {
@@ -71,6 +48,15 @@
 
         tr:nth-child(odd) {
             background-color: #ffc0cb; /* pink untuk baris ganjil */
+        }
+
+        body {
+            background-image: url('https://img.freepik.com/free-vector/petals-pink-rose-spa-background_8829-2606.jpg?w=1060&t=st=1701513014~exp=1701513614~hmac=b3ceb943adce20a674cf85ab7916955c737196f57c3f7159b2f2081cb0c69d7e'); 
+            background-size: cover; 
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
     </style>
@@ -114,6 +100,9 @@
 
     <?php
     //Connection server
+
+use App\Models\salonBooking;
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -142,13 +131,26 @@
                 <th class="center">Validasi</th>
             </tr>
             <?php
+            // tambahan cobacoba di 
+            $bookingModel = new salonBooking();
+
+            $booking = $bookingModel->findAllByQuery(); // Replace with your actual method to fetch data
+            
             $no = 1;
             foreach ($booking as $bo) :
             ?>
                 <tr>
                     <td><?= $bo['id_booking'] ?></td>
                     <td><?= $bo['email'] ?></td>
-                    <td><?= $bo['nama_jasa'] ?></td>
+                    <?php 
+                        $db      = \Config\Database::connect();
+                        $ambilJasa = $db->table('jasa')->whereIn('id_jasa',json_decode($bo['id_jasa'],true))->get()->getResult();
+                        $temp = [];
+                        foreach ($ambilJasa as $key => $value) {
+                            $temp[] = $value->nama_jasa;
+                        }
+                    ?>
+                    <td><?= implode(', ',$temp); ?></td>
                     <td><?= $bo['waktu'] ?></td>
                     <td><?= $bo['pembayaran'] ?></td>
                     <td>

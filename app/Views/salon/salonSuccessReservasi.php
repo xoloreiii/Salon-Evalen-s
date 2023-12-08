@@ -134,7 +134,7 @@
             <?php  
             // Mengambil nilai dari formulir
             $email = isset($_POST['email']) ? $_POST['email'] : '';
-            $jasa = isset($_POST['jasa']) ? $_POST['jasa'] : '';
+            $jasa = isset($jasa_data) ? implode(',',$jasa_data) : '';
             $waktu_reservasi = isset($_POST['waktu']) ? $_POST['waktu'] : '';
             $metode_pembayaran = isset($_POST['pembayaran']) ? $_POST['pembayaran'] : '';
             ?>

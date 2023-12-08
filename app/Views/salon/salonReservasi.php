@@ -88,6 +88,7 @@
 
             // Tampilkan total harga
             document.getElementById("totalHarga").innerText = "Total Harga: " + total;
+            document.getElementById("inputTotalHarga").value = total;
         }
         
     </script>
@@ -174,6 +175,7 @@
                         </p>
                     </div>
                     <p id="totalHarga">Total Harga: 0</p>
+                    <input type="hidden" name="totalPrice" id="inputTotalHarga" value="0">
                     <p>
                         <button name="submit" type="submit" value="reservasi" class="form-control" style="background-color: #BD7272; color: #fff;">Konfirmasi Reservasi</button>
                     </p>

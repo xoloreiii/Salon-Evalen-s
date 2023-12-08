@@ -181,10 +181,10 @@ class SalonController extends BaseController
 
             // Mengambil data yang disubmit dari form
             $post = $this->request->getPost([
-                'email', 'nama_jasa', 'jasa',
+                'email', 'nama_jasa', 'jasa', 'totalPrice',
                 'waktu', 'pembayaran'
             ]);
-
+            
             $img = null;
 
             if ($post['pembayaran'] != 'CASH') {
@@ -200,16 +200,34 @@ class SalonController extends BaseController
                 $post['status'] = 'Belum Lunas';
             }
 
-
+            $post['harga_transaksi'] = 0;
+            // var_dump($post);die();
             // Mengakses Model untuk menyimpan data
-            $model = model(salonBooking::class);
-            $model->simpan($post);
+            // $model = model(salonBooking::class);
+            // $model->simpan($post);
+            $model = new salonBooking();
+            $model->insert([
+                'email' => $post['email'],
+                'id_jasa' => json_encode($post['jasa']),
+                'waktu' => $post['waktu'],
+                'pembayaran' => $post['pembayaran'],
+                'photo' => $post['photo'],
+                'harga_transaksi' => isset($post['totalPrice'])?$post['totalPrice']:0,
+                'status' => $post['status'],
+            ]);
 
             if (!is_null($img)) {
                 $img->move('../public/gambars', $post['photo']);
             }
+            $db      = \Config\Database::connect();
+            $ambilJasa = $db->table('jasa')->whereIn('id_jasa',$post['jasa'])->get()->getResult();
+            $temp = [];
+            foreach ($ambilJasa as $key => $value) {
+                $temp[] = $value->nama_jasa;
+            }
+            $post['jasa_data'] = $temp;
 
-            return view('/salon/salonSuccessReservasi');
+            return view('/salon/salonSuccessReservasi',$post);
 
         } else {
             return view('/salon/loginpages');
@@ -281,23 +299,6 @@ class SalonController extends BaseController
         // Load the view
         return view('salon/salonProfile');
     }
-
-    // public function profile()
-    // {
-    //     return view ('salon/salonProfile');
-    //     $session = session();
-    //     if ($session->has('pengguna')) {
-    //         helper('form');
-    //         // Memeriksa apakah melakukan submit data atau tidak.
-    //         if (!$this->request->is('post')) {
-    //             return view('/salon/salonProfile', ['session' => $session, 'price_list' => model(salonPricelist::class)->ambillSemua()]);
-    //         }
-
-    //         return view('/salon/salonSuccessReservasi');
-    //     } else {
-    //         return view('/home');
-    //     }
-    // }
 
     public function profile()
     {
