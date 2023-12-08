@@ -73,6 +73,23 @@
                 paymentForm.style.display = "none";
             }
         }
+
+        function calculateTotal() {
+            var total = 0;
+            var checkboxes = document.getElementsByName("jasa[]");
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    // Ambil nilai harga dari atribut data-harga
+                    var harga = parseFloat(checkbox.getAttribute("data-harga"));
+                    total += harga;
+                }
+            });
+
+            // Tampilkan total harga
+            document.getElementById("totalHarga").innerText = "Total Harga: " + total;
+        }
+        
     </script>
 </head>
 
@@ -124,13 +141,12 @@
                         <input placeholder="Masukkan email" class="form-control" type="text" id="email" name="email" value="<?= $session->pengguna ?>">
                     </p>
                     <p>
-                        <label for="jasa">Pilih jasa :</label>
-                        <select id="jasa" name="jasa" class="form-control">
-                            <option value="">Silahkan Pilih</option>
-                            <?php foreach ($price_list as $data) { ?>
-                                <option value="<?= $data['id_jasa'] ?>"><?= $data['nama_jasa'] . ' ~ ' . $data['harga'] ?></option>
-                            <?php } ?>
-                        </select>
+                    <!-- Ganti input jasa dengan checkbox -->
+                        <label for="jasa">Pilih jasa :</label><br>
+                        <?php foreach ($price_list as $data) { ?>
+                            <input type="checkbox" name="jasa[]" value="<?= $data['id_jasa'] ?>" data-harga="<?= $data['harga'] ?>" onchange="calculateTotal()">
+                            <?= $data['nama_jasa'] . ' : Rp.' . $data['harga'] ?><br>
+                        <?php } ?>
                     </p>
                     <p>
                         <label for="waktu">Pilih waktu reservasi :</label><br>
@@ -157,6 +173,7 @@
                             <input type="file" id="photo" name="photo" accept="image/*">
                         </p>
                     </div>
+                    <p id="totalHarga">Total Harga: 0</p>
                     <p>
                         <button name="submit" type="submit" value="reservasi" class="form-control" style="background-color: #BD7272; color: #fff;">Konfirmasi Reservasi</button>
                     </p>

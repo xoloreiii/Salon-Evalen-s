@@ -210,10 +210,13 @@ class SalonController extends BaseController
             }
 
             return view('/salon/salonSuccessReservasi');
+
         } else {
             return view('/salon/loginpages');
         }
     }
+
+    
 
     public function ValidasiPembayaran()
     {
